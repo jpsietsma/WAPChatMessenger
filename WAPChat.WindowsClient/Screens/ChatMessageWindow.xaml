@@ -1,0 +1,14 @@
+﻿<Window x:Class="WAPChat.WindowsClient.Screens.ChatMessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WAPChat.WindowsClient.Screens" 
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d" Height="450" Width="800">
+    <Grid>
+        <telerik:RadChat x:Name="myChat"
+                             SendMessage="RadChat_SendMessage"
+                             DataSource="{Binding AllMessages}"/>
+    </Grid>
+</Window>

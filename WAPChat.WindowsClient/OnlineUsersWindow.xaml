@@ -1,0 +1,76 @@
+﻿<Window x:Class="WAPChat.WindowsClient.OnlineUsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WAPChat.WindowsClient"
+        mc:Ignorable="d"
+        Title="User Contacts | WAPChat Messenger" Height="780" Width="325">
+    <Grid Background="LightBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="600" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image Source="/Images/waclogo.jpg" VerticalAlignment="Top" Grid.Row="0" />
+        <Line Stroke="Black" StrokeThickness="5" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" />
+            <TextBlock Text="My Status: " Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="18" />
+        <Line Stroke="Gold"  StrokeThickness="12" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" />
+        <TabControl Grid.Row="2" VerticalAlignment="Top">            
+            <TabItem Header="Online Users">
+                <Grid Background="DarkCyan" Height="575">
+                    <ListBox x:Name="OnlineUsers_Listbox" Background="Beige" Height="575" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding UserAvailabilityStatus}" Grid.Column="0" />
+                                    <TextBlock Text="{Binding UserProfileThumb}" Grid.Column="1" />
+                                    <TextBlock Text="{Binding UserName}" Grid.Column="2" />                                    
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="My Account">
+                <Grid Background="DodgerBlue" Height="575">
+                    <ListBox Background="Beige" Height="575" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300">
+                        
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="My Favorites">
+                <Grid Height="575">
+                    <ListBox Background="Beige" Height="575" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300">
+                        
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Settings">
+                <Grid Background="MediumOrchid" Height="575">
+                    <ListBox Background="Beige" Height="575" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300">
+                        
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="NewMessage_Button" Grid.Column="0" Click="NewMessage_Button_Click" Height="25" Width="80" HorizontalAlignment="Center">New Message</Button>
+            <Button x:Name="FileTransfer_Button" Grid.Column="1" Click="FileTransfer_Button_Click" Height="25" Width="80" HorizontalAlignment="Center">Share Files</Button>
+            <Button x:Name="Logout_Button" Grid.Column="2" Click="Logout_Button_Click" Height="25" Width="60" HorizontalAlignment="Center">Sign Out</Button>
+        </Grid>        
+    </Grid>
+</Window>
