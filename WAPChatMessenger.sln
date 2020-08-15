@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAPChat.MobileClients.Andro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAPChat.MobileClients.iOS", "WAPChat.MobileClients\iOS\WAPChat.MobileClients.iOS.csproj", "{D9876A3E-292B-4CFD-AE99-A112D839ED6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAPChat.MobileClients.Portable", "WAPChat.MobileClients\Portable\WAPChat.MobileClients.Portable.csproj", "{FE74A91A-3653-4A85-B9C1-7AFBEC005A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WAPChat.MobileClients.Portable", "WAPChat.MobileClients\Portable\WAPChat.MobileClients.Portable.csproj", "{FE74A91A-3653-4A85-B9C1-7AFBEC005A58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

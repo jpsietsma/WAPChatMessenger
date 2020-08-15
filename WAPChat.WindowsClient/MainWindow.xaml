@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <telerik:RadChat x:Name="myChat"
+        <!--<telerik:RadChat x:Name="myChat"
                              SendMessage="RadChat_SendMessage"
-                             DataSource="{Binding AllMessages}"/>
+                             DataSource="{Binding AllMessages}"/>-->
     </Grid>
 </Window>

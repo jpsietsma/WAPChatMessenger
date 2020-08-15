@@ -187,5 +187,14 @@
   <ItemGroup>
     <Resource Include="Images\icon_globe.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\OnlineUser_GreenCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AwayUser_YellowCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BusyUser_RedCircle.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

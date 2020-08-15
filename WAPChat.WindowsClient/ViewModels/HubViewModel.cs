@@ -12,7 +12,7 @@ namespace WAPChat.WindowsClient.ViewModels
     {
         protected IHubProxy Proxy { get; set; }
 
-        protected string url = "http://wapchat.sietsmadevelopment.com";
+        protected string url = @"https://localhost:44366/";
 
         protected HubConnection Connection { get; set; }
 

@@ -14,11 +14,13 @@ namespace WAPChat.WindowsClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string CurrentUser { get; set; }
+
         public ChatViewModel ViewModel { get; set; }
 
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
 
             //TODO: Replace this with login logic later on
             RadWindow.Prompt(new DialogParameters
@@ -27,7 +29,9 @@ namespace WAPChat.WindowsClient
                 Closed = new EventHandler<WindowClosedEventArgs>(OnPromptClosed)
             });
 
-            Window buddylist = new OnlineUsersWindow();
+            ViewModel = new ChatViewModel(CurrentUser);
+
+            Window buddylist = new OnlineUsersWindow(CurrentUser);
             buddylist.Activate();
             buddylist.Show();
 
@@ -39,16 +43,9 @@ namespace WAPChat.WindowsClient
             {
                 this.ViewModel = new ChatViewModel(e.PromptResult);
                 this.DataContext = this.ViewModel;
-                this.myChat.CurrentAuthor = this.ViewModel.CurrentAuthor;
+                CurrentUser = e.PromptResult;
             }
 
-        }
-
-        private void RadChat_SendMessage(object sender, SendMessageEventArgs e)
-        {
-            this.ViewModel.CurrentMessage = e.Message as TextMessage;
-
-            this.ViewModel.SendCurrentMessage();
         }
     }
 }

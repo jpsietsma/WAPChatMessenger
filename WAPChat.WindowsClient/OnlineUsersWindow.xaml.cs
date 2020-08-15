@@ -22,71 +22,79 @@ namespace WAPChat.WindowsClient
     public partial class OnlineUsersWindow : Window
     {
         private List<UserListItemViewModel> AllUsers;
+        private string CurrentUser;
 
-        public OnlineUsersWindow()
+        public OnlineUsersWindow(string currentUser)
         {
             InitializeComponent();
+            CurrentUser = currentUser;
 
             AllUsers = new List<UserListItemViewModel> {
                 new UserListItemViewModel
                 {
                     UserName = "Amy Faulkner",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AWAY,
-                    UserProfileThumb = "~/Images/Users/John.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/John.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Ben Green",
                     UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
-                    UserProfileThumb = "~/Images/Users/BenGreen.jpg"
+                    UserProfileThumb = @"/Images/Users/BenGreen.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Ben Hendee",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/BenHendee.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/BenHendee.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Craig Cashman",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/CraigCashman.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/CraigCashman.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "John Jackson",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/JohnJackson.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/JohnJackson.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Nadine Trahan",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/NadineTrahan.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/NadineTrahan.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Nate Townsend",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/NateTownsend.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/NateTownsend.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Pete Steenland",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/PeteSteenland.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/PeteSteenland.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Rich Toby",
-                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/RichToby.jpg"
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/RichToby.jpg"
                 },
                 new UserListItemViewModel
                 {
                     UserName = "Suzie Seymour",
+                    UserAvailabilityStatus = UserListItemViewModel.UserAvailability.BUSY,
+                    UserProfileThumb = @"/Images/Users/SuzieSeymour.jpg"
+                },
+                new UserListItemViewModel
+                {
+                    UserName = "Jimmy Sietsma",
                     UserAvailabilityStatus = UserListItemViewModel.UserAvailability.AVAILABLE,
-                    UserProfileThumb = "~/Images/Users/SuzieSeymour.jpg"
+                    UserProfileThumb = @"/Images/Users/JimmySietsma.jpg"
                 }
             };
 
@@ -98,16 +106,35 @@ namespace WAPChat.WindowsClient
             this.Close();
         }
 
-        private void NewMessage_Button_Click(object sender, RoutedEventArgs e)
+        private void Announcement_Button_Click(object sender, RoutedEventArgs e)
         {
-            Window newMessage = new ChatMessageWindow("John Jackson");
+            Window newMessage = new ChatMessageWindow(CurrentUser);
             newMessage.Activate();
+            newMessage.Show();
         }
 
         private void FileTransfer_Button_Click(object sender, RoutedEventArgs e)
         {
             Window newFileTransfer = new FileTransferWindow();
             newFileTransfer.Activate();
+        }
+
+        private void OnlineUsers_Listbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedUser = this.OnlineUsers_Listbox.SelectedItem as UserListItemViewModel;
+            ChatMessageWindow newMsg;
+
+            if (selectedUser != null)
+            {
+                newMsg = new ChatMessageWindow(CurrentUser, selectedUser.UserName);                
+            }
+            else
+            {
+                newMsg = new ChatMessageWindow(CurrentUser);
+            }
+
+            newMsg.Activate();
+            newMsg.Show();
         }
     }
 }

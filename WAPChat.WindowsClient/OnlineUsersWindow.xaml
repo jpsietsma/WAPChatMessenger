@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WAPChat.WindowsClient"
         mc:Ignorable="d"
-        Title="User Contacts | WAPChat Messenger" Height="780" Width="325">
+        Title="User Contacts | WAPChat Messenger" Height="790" Width="325">
     <Grid Background="LightBlue">
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
@@ -23,7 +23,7 @@
         <TabControl Grid.Row="2" VerticalAlignment="Top">            
             <TabItem Header="Online Users">
                 <Grid Background="DarkCyan" Height="575">
-                    <ListBox x:Name="OnlineUsers_Listbox" Background="Beige" Height="575" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300">
+                    <ListBox x:Name="OnlineUsers_Listbox" Background="Beige" Height="575" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" MouseDoubleClick="OnlineUsers_Listbox_MouseDoubleClick">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,2">
@@ -31,9 +31,8 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="100" />
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding UserAvailabilityStatus}" Grid.Column="0" />
-                                    <TextBlock Text="{Binding UserProfileThumb}" Grid.Column="1" />
-                                    <TextBlock Text="{Binding UserName}" Grid.Column="2" />                                    
+                                    <Image Source="{Binding IconPath}"  Grid.Column="0"/>
+                                    <TextBlock Text="{Binding UserName}" Grid.Column="1" Grid.ColumnSpan="2" />                                    
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -68,7 +67,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="NewMessage_Button" Grid.Column="0" Click="NewMessage_Button_Click" Height="25" Width="80" HorizontalAlignment="Center">New Message</Button>
+            <Button x:Name="Announcement_Button" Grid.Column="0" Click="Announcement_Button_Click" Height="25" Width="80" HorizontalAlignment="Center">Announcement</Button>
             <Button x:Name="FileTransfer_Button" Grid.Column="1" Click="FileTransfer_Button_Click" Height="25" Width="80" HorizontalAlignment="Center">Share Files</Button>
             <Button x:Name="Logout_Button" Grid.Column="2" Click="Logout_Button_Click" Height="25" Width="60" HorizontalAlignment="Center">Sign Out</Button>
         </Grid>        

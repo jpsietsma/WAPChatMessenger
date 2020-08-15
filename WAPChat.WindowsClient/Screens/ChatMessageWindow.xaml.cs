@@ -14,20 +14,29 @@ namespace WAPChat.WindowsClient.Screens
     /// </summary>
     public partial class ChatMessageWindow : Window
     {
+        public string CurrentUser { get; set; }
         public ChatViewModel ViewModel { get; set; }
 
-        public ChatMessageWindow()
+        public ChatMessageWindow(string currentUser)
         {
             InitializeComponent();
+            CurrentUser = currentUser;
 
-            Title = $@"Announcement from {ViewModel.CurrentAuthor} | WAPChat Global Message";
+            Title = $@"Announcement from {CurrentUser} | WAPChat Global Message";
         }
 
-        public ChatMessageWindow(string recipient)
+        public ChatMessageWindow(string sender, string recipient)
         {
             InitializeComponent();
 
-            Title = $@"{ViewModel.CurrentRecipient} | WAPChat Private Instant Message";
+            Title = $@"{recipient} | WAPChat Private Instant Message";
+
+            ViewModel = new ChatViewModel(recipient)
+            {
+                CurrentRecipient = new Author(recipient),
+                CurrentAuthor = new Author(sender)
+            };
+
             this.ViewModel.CurrentRecipient = new Author(recipient);
         }
 
@@ -62,5 +71,8 @@ namespace WAPChat.WindowsClient.Screens
                 vm.SendCurrentMessage(vm.CurrentRecipient.Name);
             }
         }
+
+
+
     }
 }
